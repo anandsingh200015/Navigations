@@ -1,4 +1,4 @@
-package com.example.navigationexample
+package com.example.navigationexample.Screens
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -13,18 +13,30 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.navigationexample.navigation.Screens
+
 
 @Composable
-fun ScreenB(myName : String?,myAge:String?) {
-    Column(
-        modifier = Modifier.fillMaxSize(),
+fun  HomeScreen(navController: NavController, modifier: Modifier = Modifier){
+    Column(modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(text = "Details Screen", fontSize = 64.sp)
-        Spacer(modifier = Modifier.height(45.dp))
-        Text(text = "Your name is: $myName", fontSize = 44.sp)
-        Spacer(modifier = Modifier.height(45.dp))
-        Text(text = "Your Age is: $myAge", fontSize = 44.sp)
+        Text(text= "Home Screen", fontSize = 40.sp)
+        Spacer(modifier.height(40.dp))
+        Button(onClick = {
+
+            navController.navigate(Screens.ScreenARoute.route)
+        }) {
+            Text(text = "Go to A", fontSize = 25.sp)
+        }
+        Spacer(modifier.height(40.dp))
+        Button(onClick = {
+            navController.navigate(Screens.ScreenBRoute.route)
+        }) {
+            Text(text = "Go to B", fontSize = 25.sp)
+        }
+
+
     }
 }
